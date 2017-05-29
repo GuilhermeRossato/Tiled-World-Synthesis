@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Synthesis - Tile World Synthesis Experiment</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+		canvas {
+			background-color:#E5E5E5;
+			image-rendering: pixelated;
+		}
+		</style>
+	</head>
+	<body style="width:100vw;height:100vh;overflow:hidden;margin:0;padding:0;font-size:2vmax;text-shadow: 0px 0px 2px #fff;">
+		<div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-around;height:100vh;background-color:#CCC" id='main'>
+		</div>
+		<script src="Script/setup.js"></script>
+
+		<script src="Script/Models/Knots.js"></script>
+
+		<script src="Script/Reusable/polyfill.js"></script>
+		<script src="Script/Reusable/BezierFunctions.js"></script>
+		<script src="Script/Classes/TiledData.js"></script>
+		<script src="Script/Classes/TiledChances.js"></script>
+		<script src="Script/Classes/ModelRenderer.js"></script>
+		<script src="Script/Classes/ModelImageLoader.js"></script>
+		<script src="Script/Classes/ModelProcessor.js"></script>
+		<script src="Script/Classes/WorldGenerator.js"></script>
+
+		<script src="Script/Modules/Application.js"></script>
+	</body>
+</html>
