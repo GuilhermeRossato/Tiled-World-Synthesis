@@ -16,22 +16,21 @@ ModelImageLoader.prototype = {
 				callback();
 			}
 			return true;
-		}
-		, auxCanvas = document.createElement("canvas"), ctx = auxCanvas.getContext("2d");
-		auxCanvas.width = auxCanvas.height = this.tileSize;
+		};
 		this.tiles.forEach((tile,i)=>{
 			let image = new Image();
 			if (tile.rotation) {
 				image.onload = ()=>{
-					let size = this.tileSize;
+					let size = this.tileSize, auxCanvas = document.createElement("canvas"), ctx = auxCanvas.getContext("2d");
+					auxCanvas.width = auxCanvas.height = size;
 					ctx.clearRect(-1, -1, size + 2, size + 2);
 					ctx.save();
 					ctx.translate(size/2, size/2);
 					ctx.rotate(tile.rotation * Math.PI / 2);
 					ctx.drawImage(image, -size/2, -size/2);
 					ctx.restore();
-					image.onload = ()=>(onLoadImage(tile, i));
-					image.src = auxCanvas.toDataURL();
+					tile.image = auxCanvas;
+					onLoadImage(tile, i);
 				}
 			} else {
 				image.onload = ()=>(onLoadImage(tile, i));
