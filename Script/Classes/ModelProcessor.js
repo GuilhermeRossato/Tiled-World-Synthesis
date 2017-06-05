@@ -26,15 +26,15 @@ ModelProcessor.prototype = {
 	}],
 	process: function(ctx) {
 		this.tiles.forEach(tile=>{
-			console.log(`Configuring tile id ${tile.index}`);
+			//console.log(`Configuring tile id ${tile.index}`);
 			tile.connections = {};
 			this.sides.forEach(side=>{
-				console.log(`  Configuring side ${side.name}`);
+				//console.log(`  Configuring side ${side.name}`);
 				let sideConnectionList = [];
 				this.connections.forEach((connection, k)=>{
 					if (connection[side.inverse] === tile.index) {
 						if (sideConnectionList.every(entry => entry.index !== connection[side.name])) {
-							console.log(`    Match on connection ${k}, adding ${connection[side.name]} (w: ${connection.weight}) to tiles[${tile.index}].${side.name} list`);
+							//console.log(`    Match on connection ${k}, adding ${connection[side.name]} (w: ${connection.weight}) to tiles[${tile.index}].${side.name} list`);
 							sideConnectionList.push({
 								index: connection[side.name],
 								weight: connection.weight
