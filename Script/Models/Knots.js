@@ -21,11 +21,11 @@ Models.Knots = {
         }, {
             index: 4,
             image: "knots/line.png",
-            rotation: 0
+            rotation: 1
         }, {
             index: 5,
             image: "knots/line.png",
-            rotation: 1
+            rotation: 0
         }
     ],
     connections: [
