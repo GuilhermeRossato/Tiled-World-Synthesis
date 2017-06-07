@@ -1,8 +1,10 @@
 # Tiled World Synthesis
 
-My attempt at generating a tiled world from a set of connection rules. Inspirated by [Wave Function Collapse](https://github.com/mxgmn/WaveFunctionCollapse) - by [ExUtumno](https://github.com/mxgmn).
+My attempt at generating a tiled world from a set of connection rules.
 
 [Click here to see it as of now](https://rawgit.com/GuilhermeRossato/TiledWorldSynthesis/master/index.html)
+
+Heavily inspirated by [Wave Function Collapse](https://github.com/mxgmn/WaveFunctionCollapse) - by [ExUtumno](https://github.com/mxgmn).
 
 # How it should work
 
@@ -16,7 +18,7 @@ And you know computers, you can give them all sorts of instructions to vary your
 
 Here's the set of rules that should generate the world in the picture above:
 
-'''javascript
+```javascript
 Models.Knots = {
     name:"Knots",
     tileSize: 10,
@@ -153,4 +155,4 @@ Models.Knots = {
         }
     ]
 };
-'''
+```
