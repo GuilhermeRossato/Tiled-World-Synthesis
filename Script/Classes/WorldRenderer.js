@@ -9,6 +9,7 @@ function WorldRenderer(WorldData, width, height, context) {
 WorldRenderer.prototype = {
 	constructor: WorldRenderer,
 	render: function(data) {
+		console.assert(data, "Data must exist!");
 		let cwidth = this.width * this.tileSize
 		  , cheight = this.height * this.tileSize
 		  , ctx = this.context;
