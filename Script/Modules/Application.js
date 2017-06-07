@@ -1,4 +1,8 @@
 const Application = (function() {
+
+	let worldSize = [30, 30];
+	let model = Models.Knots;
+
 	function createCanvas(width, height, scale) {
 		let canvas = document.createElement("canvas");
 		canvas.width = width;
@@ -17,9 +21,6 @@ const Application = (function() {
 		canvases: canvas,
 		init: function() {
 			canvas[1].addEventListener("click", ()=>this.onMouseDown.call(this));
-			
-			let worldSize = [10, 10];
-			let model = Models.Knots;
 			let imageLoader = new ModelImageLoader(model);
 			let self = this;
 			imageLoader.load().then(processModel);
@@ -48,8 +49,6 @@ const Application = (function() {
 		onMouseDown: function() {
 			if (this.lastGenerator)
 				this.lastGenerator.stop();
-			let worldSize = [10, 10];
-			let model = Models.Knots;
 			let generator = new WorldGenerator(model, worldSize[0], worldSize[1]);
 			let context = canvas[1].getContext("2d");
 			let renderer = new WorldRenderer(model, worldSize[0], worldSize[1], context);
