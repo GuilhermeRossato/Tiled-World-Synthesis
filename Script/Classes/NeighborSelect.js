@@ -28,6 +28,11 @@ function NeighborSelect(width, height) {
 		rec(ox, oy);
 		return startArray;
 	}
+	this.selectOthers = function(ox, oy, radius, startArray) {
+		let arr = this.select(ox, oy, radius, startArray);
+		arr.shift();
+		return arr;
+	}
 }
 
 NeighborSelect.prototype = {
