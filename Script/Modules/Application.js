@@ -16,8 +16,12 @@ const Application = (function() {
 		elements: elements,
 		canvases: canvas,
 		init: function() {
+			canvas[1].addEventListener("click", ()=>this.onMouseDown.call(this));
+			
+			let worldSize = [10, 10];
 			let model = Models.Knots;
 			let imageLoader = new ModelImageLoader(model);
+			let self = this;
 			imageLoader.load().then(processModel);
 
 			function processModel() {
@@ -26,18 +30,31 @@ const Application = (function() {
 			}
 
 			function createWorld() {
-				let generator = new WorldGenerator(model, 44, 44);
+				let generator = new WorldGenerator(model, worldSize[0], worldSize[1]);
+				self.lastGenerator = generator;
 				// If you pass a world renderer to the world generator, it will become async and draw as it generates the world.
 				let context = canvas[1].getContext("2d");
-				let renderer = new ModelRenderer(model, 44, 44, context);
-				generator.generate().then(drawData, renderer);
+				let renderer = new WorldRenderer(model, worldSize[0], worldSize[1], context);
+				generator.generate(renderer).then(drawData);
 			}
 
 			function drawData(data) {
-				let renderer = new ModelRenderer(model, 44, 44, context);
 				let context = canvas[1].getContext("2d");
+				let renderer = new WorldRenderer(model, worldSize[0], worldSize[1], context);
 				renderer.render(data);
 			}
+
+		},
+		onMouseDown: function() {
+			if (this.lastGenerator)
+				this.lastGenerator.stop();
+			let worldSize = [10, 10];
+			let model = Models.Knots;
+			let generator = new WorldGenerator(model, worldSize[0], worldSize[1]);
+			let context = canvas[1].getContext("2d");
+			let renderer = new WorldRenderer(model, worldSize[0], worldSize[1], context);
+			this.lastGenerator = generator;
+			generator.generate(renderer).then(()=>(this.creating = false));
 		}
 	}
 })();
